@@ -25,6 +25,8 @@ complete <- function(directory = "specdata", id = 1:332) {
     
     colnames(comp) <- c("ID", "nobs")
     
+    comp <- as.data.frame(comp)
+    
     return(comp)
     
 }
