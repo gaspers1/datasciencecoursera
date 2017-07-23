@@ -11,6 +11,8 @@ pollutantmean <- function(directory = "specdata", pollutant = "sulfate", id = 1:
     
     filepaths <- paste(dirform, files, sep="")
 
+    totalfile <- c()
+    
     for (i in id) {
     
         file <- read.csv(filepaths[i], header=T, sep=",")
