@@ -20,7 +20,7 @@ setwd("./UCI HAR Dataset")
 dir()
 
 
-# import all tables for merge within df
+# 2. Import all tables for merge within df
 
 features <- read.table("features.txt", colClasses = "character")
 
@@ -36,7 +36,7 @@ df_test <- fread("./test/X_test.txt")
 labels_test <- fread("./test/y_test.txt")
 subject_test <- fread("./test/subject_test.txt")
 
-# merge both tables - train and test
+# 3. Merge both tables - train and test
 
 train <- cbind(subject_train, labels_train, df_train)
 test <- cbind(subject_test, labels_test, df_test)
@@ -44,7 +44,7 @@ test <- cbind(subject_test, labels_test, df_test)
 df <- as.data.frame(rbind(train, test))
 
 
-# append labels
+# 4. Append labels
 
 colnames(df) <- c("subject", "activity", features[, 2])
 
@@ -58,7 +58,7 @@ df$activity <- factor(df$activity, levels = activities[, 1], labels = activities
 
 dfcols <- colnames(df)
 
-# replace all short names with descriptive var names
+# 5. Replace all short names with descriptive var names
 
 dfcols <- gsub("[\\(\\)-]", "", dfcols)
 
@@ -76,7 +76,7 @@ colnames(df) <- dfcols
 
 
 
-# aggregate means in whole dataset by subject and activity
+# 6. Aggregate means in whole dataset by subject and activity
 
 dfMeans <- df %>% 
     group_by(subject, activity) %>%
@@ -84,6 +84,6 @@ dfMeans <- df %>%
 
 colnames(dfMeans)
 
-# output to file 
+# 7. Output to file 
 
 write.table(dfMeans, "tidy_data.txt", row.names = FALSE, quote = FALSE)
