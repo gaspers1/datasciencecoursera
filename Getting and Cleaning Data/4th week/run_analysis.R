@@ -1,5 +1,6 @@
 
 library(dplyr)
+library(data.table)
 
 
 # 1. Download the data, unzip, remove zipped file and check files in folder
@@ -61,14 +62,14 @@ dfcols <- colnames(df)
 
 dfcols <- gsub("[\\(\\)-]", "", dfcols)
 
-dfcols <- gsub("^f", "frequency", dfcols)
+dfcols <- gsub("^f", "fre", dfcols)
 dfcols <- gsub("^t", "time", dfcols)
 dfcols <- gsub("Acc", "Accelerometer", dfcols)
 dfcols <- gsub("Gyro", "Gyroscope", dfcols)
 dfcols <- gsub("Mag", "Magnitude", dfcols)
 dfcols <- gsub("Freq", "Frequency", dfcols)
 dfcols <- gsub("mean", "Mean", dfcols)
-dfcols <- gsub("std", "StandardDev", dfcols)
+dfcols <- gsub("std", "StdDev", dfcols)
 dfcols <- gsub("BodyBody", "Body", dfcols)
 
 colnames(df) <- dfcols
@@ -80,6 +81,8 @@ colnames(df) <- dfcols
 dfMeans <- df %>% 
     group_by(subject, activity) %>%
     summarise_all(funs(mean))
+
+colnames(dfMeans)
 
 # output to file 
 
