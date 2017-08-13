@@ -1,6 +1,16 @@
-### Code Book ###
+# Code Book #
 
-## All variables present different measurements for each subject and activity (indicated by first two columns). ##
+### Getting and cleanign data process flow: ###
+
+1. Download the data, unzip, remove zipped file and check files in folder
+2. Import all tables for merge within df
+3. Merge both tables - train and test
+4. Append labels
+5. Replace all short names with descriptive var names
+6. Aggregate means in whole dataset by subject and activity
+7. Output to file 
+
+### All variables present different measurements for each subject and activity (indicated by first two columns). ###
 
  [1] "subject"                                       
  [2] "activity"                                      
