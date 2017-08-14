@@ -1,4 +1,4 @@
-setwd("C:/Users/gasper.stanovnik/Documents/Development/R/datasciencecoursera")
+setwd("C:/Users/gasper.stanovnik/Documents/Development/R/datasciencecoursera/R programming/1st week")
 
 list.files(path = getwd())
 
